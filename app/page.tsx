@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { Entry, SessionState } from "@/lib/types";
 import { initialState } from "@/lib/types";
+import { PenIcon } from "./icons";
 
 const ENTRIES_KEY = "kagami:entries";
 const STATE_KEY = "kagami:state";
@@ -184,8 +185,14 @@ export default function Page() {
           />
           <div className="composer-actions">
             <span className="hint">⌘↵ で送信</span>
-            <button onClick={send} disabled={loading || !input.trim()}>
-              書く
+            <button
+              className="send"
+              onClick={send}
+              disabled={loading || !input.trim()}
+              aria-label="書く"
+              title="書く"
+            >
+              <PenIcon />
             </button>
           </div>
         </div>

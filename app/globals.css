@@ -161,6 +161,18 @@ button:disabled {
   cursor: default;
 }
 
+button.send {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.7rem;
+  color: var(--mirror);
+}
+
+button.send:hover:not(:disabled) {
+  color: var(--ink);
+}
+
 .thinking {
   color: var(--ink-soft);
   font-style: italic;
