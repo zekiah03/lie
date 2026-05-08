@@ -1,5 +1,5 @@
-const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL ?? ''
-const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? ''
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL ?? 'https://bxewkghaljeucxekwltd.supabase.co'
+const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ4ZXdrZ2hhbGpldWN4ZWt3bHRkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYzNjg0MzIsImV4cCI6MjA5MTk0NDQzMn0.Efo4opmFKm9TFrKamH4Yvg44nIXP8sD9JhH5Rq7KaqM'
 const TWIN_URL = process.env.NEXT_PUBLIC_TWIN_URL ?? 'https://solnova.app'
 const SESSION_KEY = 'solnova_twin_session'
 
@@ -10,7 +10,6 @@ interface TwinSession {
 }
 
 async function getTwinToken(): Promise<string | null> {
-  if (!SUPABASE_URL || !SUPABASE_ANON_KEY) return null
   try {
     const stored = localStorage.getItem(SESSION_KEY)
     if (stored) {
