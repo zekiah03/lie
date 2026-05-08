@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import type { Entry, SessionState } from "@/lib/types";
 import { initialState } from "@/lib/types";
 import { PenIcon } from "./icons";
+import { contributeToTwin } from "@/lib/contribute";
 
 const ENTRIES_KEY = "kagami:entries";
 const STATE_KEY = "kagami:state";
@@ -94,6 +95,10 @@ export default function Page() {
         createdAt: Date.now(),
       };
       persist([...history, aiEntry], data.state);
+      if (!sessionStorage.getItem('lie_contributed')) {
+        sessionStorage.setItem('lie_contributed', '1');
+        contributeToTwin('lie', { event: 'chat', msgCount: history.length + 2 });
+      }
     } catch (err) {
       const msg = err instanceof Error ? err.message : "通信エラー";
       setError(msg);
